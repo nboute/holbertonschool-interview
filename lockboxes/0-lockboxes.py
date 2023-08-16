@@ -13,15 +13,17 @@ def canUnlockAll(boxes):
         Returns:
             (bool): Tells whether all items in the list can be opened
     """
-    keysDict = {}
+    listSize = len(boxes)
+    openedBoxes = [False] * listSize
 
-    for index, box in enumerate(boxes):
-        if box:
-            for item in box:
-                if index != item:
-                    keysDict[item] = True
+    stack = [0]
 
-    for index, box in enumerate(boxes):
-        if index != 0 and keysDict.get(index) is not True:
-            return False
-    return True
+    while stack:
+        currentBox = stack.pop()
+        openedBoxes[currentBox] = True
+        currentKeys = boxes[currentBox]
+        for key in currentKeys:
+            if openedBoxes[key] is False and key < listSize:
+                stack.append(key)
+
+    return all(openedBoxes)
