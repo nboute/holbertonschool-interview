@@ -20,10 +20,11 @@ def canUnlockAll(boxes):
 
     while stack:
         currentBox = stack.pop()
+
         openedBoxes[currentBox] = True
         currentKeys = boxes[currentBox]
         for key in currentKeys:
-            if key in range(listSize) and openedBoxes[key] is False:
+            if key in range(listSize) and openedBoxes[key] is False and key not in stack:
                 stack.append(key)
 
     return all(openedBoxes)
