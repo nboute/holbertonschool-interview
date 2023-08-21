@@ -23,7 +23,7 @@ def canUnlockAll(boxes):
         openedBoxes[currentBox] = True
         currentKeys = boxes[currentBox]
         for key in currentKeys:
-            if openedBoxes[key] is False and key < listSize:
+            if key in range(listSize) and openedBoxes[key] is False:
                 stack.append(key)
 
     return all(openedBoxes)
