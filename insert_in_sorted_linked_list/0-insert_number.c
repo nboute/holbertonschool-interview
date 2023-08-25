@@ -7,7 +7,7 @@
  * @n: Value for n of new node
  * Return: Pointer to new node, or NULL if error
  */
-listint_t *insert_node(listint_t **head, int number);
+listint_t *insert_node(listint_t **head, int number)
 {
 	listint_t	*node, *ptr;
 
