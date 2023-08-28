@@ -74,7 +74,7 @@ heap_t *heap_insert(heap_t **root, int value)
 
 	size = binary_tree_size(*root);
 	index = size + 1;
- 	parent = NULL;
+	parent = NULL;
 	new_node = binary_tree_node(*root, value);
 	if (!new_node)
 		return (NULL);
