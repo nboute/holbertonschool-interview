@@ -1,5 +1,6 @@
 #include "binary_trees.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 /**
  * swap_btree_nodes - Swaps two binary tree nodes
@@ -44,19 +45,20 @@ size_t binary_tree_size(const binary_tree_t *tree)
  *
  * Return: Pointer to the node, or NULL if not found
  */
-binary_tree_t *find_binary_node_by_index(binary_tree_t *tree, size_t index, size_t size)
+binary_tree_t *find_binary_node_by_index(binary_tree_t *tree, size_t index,
+	size_t size)
 {
-        heap_t *left;
-        heap_t *right;
+		heap_t *left;
+		heap_t *right;
 
-        if (index > size)
-                return NULL;
-        if (index == size)
-                return tree;
-        left = find_binary_node_by_index(tree->left, 2 * index + 1, size);
-        right = find_binary_node_by_index(tree->right, 2 * index + 2, size);
+		if (index > size)
+				return NULL;
+		if (index == size)
+				return tree;
+		left = find_binary_node_by_index(tree->left, 2 * index + 1, size);
+		right = find_binary_node_by_index(tree->right, 2 * index + 2, size);
 
-        return left ? left : right;
+		return left ? left : right;
 }
 /**
  * heap_insert - Inserts a value into a Max Binary Heap
@@ -68,31 +70,31 @@ binary_tree_t *find_binary_node_by_index(binary_tree_t *tree, size_t index, size
  */
 heap_t *heap_insert(heap_t **root, int value)
 {
-        heap_t *new_node;
-        heap_t *parent;
-        size_t size;
+		heap_t *new_node;
+		heap_t *parent;
+		size_t size;
 
-        if (!root)
-                return (NULL);
-        size = binary_tree_size(*root);
-        new_node = binary_tree_node(*root, value);
-        if (!new_node)
-                return (NULL);
-        if (!*root)
-        {
-                *root = new_node;
-                return (new_node);
-        }
-        parent = find_binary_node_by_index(*root, 0, (size - 1) / 2);
-        new_node->parent = parent;
-        if (!parent->left)
-                parent->left = new_node;
-        else
-                parent->right = new_node;
-        while (new_node->parent && new_node->n > new_node->parent->n)
-        {
-                swap_btree_nodes(new_node, new_node->parent);
-                new_node = new_node->parent;
-        }
-        return (new_node);
+		if (!root)
+				return (NULL);
+		size = binary_tree_size(*root);
+		new_node = binary_tree_node(*root, value);
+		if (!new_node)
+				return (NULL);
+		if (!*root)
+		{
+				*root = new_node;
+				return (new_node);
+		}
+		parent = find_binary_node_by_index(*root, 0, (size - 1) / 2);
+		new_node->parent = parent;
+		if (!parent->left)
+				parent->left = new_node;
+		else
+				parent->right = new_node;
+		while (new_node->parent && new_node->n > new_node->parent->n)
+		{
+				swap_btree_nodes(new_node, new_node->parent);
+				new_node = new_node->parent;
+		}
+		return (new_node);
 }
