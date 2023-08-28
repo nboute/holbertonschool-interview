@@ -24,13 +24,13 @@ heap_t *heap_insert(heap_t **root, int value)
 		parent->right = new_node;
 	while (new_node->parent && new_node->n > new_node->parent->n)
 	{
-		swap(new_node, new_node->parent);
+		swap_btree_nodes(new_node, new_node->parent);
 		new_node = new_node->parent;
 	}
 	return (new_node);
 }
 
-void swap(heap_t *node1, heap_t *node2)
+void swap_btree_nodes(heap_t *node1, heap_t *node2)
 {
 	int tmp = node1->n;
 	node1->n = node2->n;
@@ -50,14 +50,14 @@ size_t binary_tree_size(const binary_tree_t *tree)
 	return (size);
 }
 
-binary_tree_t find_binary_node_by_index(binary_tree_t *tree, size_t index, size_t size)
+binary_tree_t *find_binary_node_by_index(binary_tree_t *tree, size_t index, size_t size)
 {
 	if (index > size)
 		return (NULL);
 	if (index == 1)
 		return (tree);
 	if (index % 2 == 0)
-		return (find_binary_node_by_index(tree->left, index / 2));
+		return (find_binary_node_by_index(tree->left, index / 2, size));
 	else
-		return (find_binary_node_by_index(tree->right, index / 2));
+		return (find_binary_node_by_index(tree->right, index / 2, size));
 }
