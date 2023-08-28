@@ -67,14 +67,15 @@ binary_tree_t *find_binary_node_by_index(binary_tree_t *tree, size_t index,
  */
 heap_t *heap_insert(heap_t **root, int value)
 {
-	heap_t *new_node = binary_tree_node(*root, value);
+	heap_t *new_node;
+	heap_t *parent;
+	size_t size;
+	size_t index;
 
-	if (!new_node)
-		return (NULL);
-	heap_t *parent = NULL;
-	size_t size = binary_tree_size(*root);
-	size_t index = size + 1;
-
+	size = binary_tree_size(*root);
+	index = size + 1;
+ 	parent = NULL;
+	new_node = binary_tree_node(*root, value);
 	if (!new_node)
 		return (NULL);
 	if (!*root)
