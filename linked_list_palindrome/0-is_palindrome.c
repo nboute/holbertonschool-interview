@@ -1,5 +1,4 @@
 #include "lists.h"
-#include <stdlib.h>
 
 /**
  * list_len - returns the number of elements in a linked listint_t list
@@ -25,30 +24,24 @@ size_t list_len(listint_t *ptr)
 */
 int is_palindrome(listint_t **head)
 {
-	char *str;
 	size_t len;
 	size_t i;
-	listint_t *ptr;
+	size_t j;
+	listint_t *current, *end;
 
 	if (!head || !*head)
 		return (1);
 	len = list_len(*head);
-	str = malloc(sizeof(char) * len);
-	if (!str)
-		return (0);
-	ptr = *head;
-	i = 0;
-	while (ptr)
+	current = *head;
+	for (i = 0; i < len; i++)
 	{
-		str[i++] = ptr->n;
-		ptr = ptr->next;
-	}
-	while (i < len)
-	{
-		if (str[i] != str[len - 1])
+		end = current;
+		for (j = 0; j < len - 1; j++)
+			end = end->next;
+		if (current->n != end->n)
 			return (0);
-		i++;
-		len--;
+		len -= 2;
+		current = current->next;
 	}
 	return (1);
 }
