@@ -2,7 +2,13 @@
 
 import fileinput
 
-"""Log parsing"""
+"""0-stats.py
+	Reads stdin line by line and computes metrics:
+		- Input format: <IP Address> - [<date>] "GET /projects/260 HTTP/1.1" <status code> <file size>
+	Prints total file size and possible status codes in format:
+		File size: <total size>
+		<status code>: <number>
+"""
 
 
 def print_logs(file_size: int, status_codes: dict):
