@@ -42,7 +42,6 @@ def parse_log():
     try:
         for line in fileinput.input():
             data = line.split()
-            print(data)
             current_line += 1
             if (len(data) > 8):
                 file_size += int(data[8])
