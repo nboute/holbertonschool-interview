@@ -1,7 +1,4 @@
 #!/usr/bin/python3
-
-import fileinput
-
 """0-stats.py
 	Reads stdin line by line and computes metrics:
 		- Input format: <IP Address> - [<date>] "GET /projects/260 HTTP/1.1" <status code> <file size>
@@ -10,9 +7,15 @@ import fileinput
 		<status code>: <number>
 """
 
+import fileinput
+
 
 def print_logs(file_size: int, status_codes: dict):
-    """Print logs"""
+    """Print logs
+        Args: file_size (int): Total file size
+                status_codes (dict): Dictionary of status codes
+                Returns: None
+        """
     print("File size: {}".format(file_size))
     for key, value in sorted(status_codes.items()):
         if (value > 0):
@@ -20,7 +23,10 @@ def print_logs(file_size: int, status_codes: dict):
 
 
 def parse_log():
-    """Parse log from stdin"""
+    """Parse logs about status codes and file size from stdin
+        Args: None
+                Returns: None
+        """
     file_size = 0
     status_codes = {
         200: 0,
