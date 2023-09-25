@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 """0-stats.py
-	Reads stdin line by line and computes metrics:
-		- Input format: <IP Address> - [<date>] "GET /projects/260 HTTP/1.1" <status code> <file size>
-	Prints total file size and possible status codes in format:
-		File size: <total size>
-		<status code>: <number>
+    Reads stdin line by line and computes metrics:
+        - Input format: <IP Address> - [<date>] "GET /projects/260 HTTP/1.1" <status code> <file size>
+    Prints total file size and possible status codes in format:
+        File size: <total size>
+        <status code>: <number>
 """
 
 import fileinput
@@ -29,26 +29,26 @@ def parse_log():
         """
     file_size = 0
     status_codes = {
-        200: 0,
-        301: 0,
-        400: 0,
-        401: 0,
-        403: 0,
-        404: 0,
-        405: 0,
-        500: 0}
+        "200": 0,
+        "301": 0,
+        "400": 0,
+        "401": 0,
+        "403": 0,
+        "404": 0,
+        "405": 0,
+        "500": 0}
     current_line = 0
 
     try:
         for line in fileinput.input():
             data = line.split()
+            if (len(data) < 2):
+                continue
+            file_size += int(data[-1])
+            status = data[-2]
+            if (status in status_codes):
+                status_codes[status] += 1
             current_line += 1
-            if (len(data) > 8):
-                file_size += int(data[8])
-                status = int(data[7])
-                if (status in status_codes):
-                    status_codes[status] += 1
-
             if (current_line % 10 == 0):
                 print_logs(file_size, status_codes)
     except KeyboardInterrupt:
