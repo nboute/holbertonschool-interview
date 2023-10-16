@@ -16,12 +16,10 @@ def validUTF8(data):
     """
     if (type(data) is not list or any(not isinstance(i, int) for i in data)):
         return False
-    if (any(i not in range(0, 255) for i in data)):
-        return False
+    byte_data = [i & 0xFF for i in data]
     try:
-        byte_data = bytes([data])
-        data.decode('utf-8')
-    except UnicodeError:
+        byte_data = bytes(byte_data)
+        byte_data.decode('utf-8')
+    except UnicodeDecodeError:
         return False
-    finally:
-        return True
+    return True
