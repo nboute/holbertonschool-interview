@@ -5,6 +5,7 @@
  * @line: points to an array of integers containing size elements
  * @size: size of the array
  * @direction: direction to slide
+ * Return: 1
 */
 int slide_line_end(int *line, size_t size, int direction)
 {
@@ -17,7 +18,6 @@ int slide_line_end(int *line, size_t size, int direction)
 				break;
 		for (i = index; i < size; i++)
 		{
-			print_line(line, size);
 			if (line[i] != 0 && index != i)
 			{
 				line[index] = line[i];
@@ -31,7 +31,7 @@ int slide_line_end(int *line, size_t size, int direction)
 		for (index = size - 1; index != 0; index--)
 			if (line[index] == 0)
 				break;
-		for (i = index; i >= 0; i--)
+		for (i = index; index != 0; i--)
 		{
 			if (line[i] != 0 && index != i)
 			{
@@ -51,10 +51,11 @@ int slide_line_end(int *line, size_t size, int direction)
  * @line: points to an array of integers containing size elements
  * @size: size of the array
  * @direction: direction to slide
+ * Return: 1 upon success, or 0 upon failure
 */
 int slide_line(int *line, size_t size, int direction)
 {
-	size_t i, j, index, end;
+	size_t i, index, end;
 
 	index = 0;
 	if (direction != SLIDE_LEFT && direction != SLIDE_RIGHT)
