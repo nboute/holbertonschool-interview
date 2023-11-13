@@ -3,7 +3,7 @@
 import sys
 
 
-def solve_nqueens(n, chessboard: list[int], index: int = 0):
+def solve_nqueens(n, chessboard, index: int = 0):
     """Solves the N queens problem.
     Args:
         n: The size of the chessboard.
@@ -19,7 +19,7 @@ def solve_nqueens(n, chessboard: list[int], index: int = 0):
             chessboard[index] = None
 
 
-def check_queen(chessboard: list[int], row: int, col: int):
+def check_queen(chessboard, row: int, col: int):
     """Checks if a queen can be placed at a given position.
     Args:
         chessboard: The chessboard.
@@ -37,7 +37,7 @@ def check_queen(chessboard: list[int], row: int, col: int):
     return True
 
 
-def print_nqueens(chessboard: list[int]):
+def print_nqueens(chessboard):
     """Prints the chessboard.
     Args:
         chessboard: The chessboard."""
