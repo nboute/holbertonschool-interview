@@ -46,6 +46,7 @@ def print_nqueens(chessboard):
         queens.append([row, chessboard[row]])
     print(queens)
 
+
 def nqueens():
     if len(sys.argv) != 2:
         print('Usage: nqueens N')
@@ -62,6 +63,7 @@ def nqueens():
 
     chessboard = [None for row in range(n)]
     solve_nqueens(n, chessboard)
+
 
 if __name__ == '__main__':
     nqueens()
