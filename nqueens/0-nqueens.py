@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""N queens problem solver."""
 import sys
 
 
