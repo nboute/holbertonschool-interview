@@ -31,8 +31,8 @@ def check_queen(chessboard, row: int, col: int):
             continue
         if chessboard[i] == col and i != row:
             return False
-        if i != row and (chessboard[i] == col - (row - i)
-                         or chessboard[i] == col + (row - i)):
+        if i != row and (chessboard[i] == col - (row - i) or
+                         chessboard[i] == col + (row - i)):
             return False
     return True
 
