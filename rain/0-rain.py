@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-""" Rain module"""
+"""0-rain.py
+This module contains the function rain(walls) that calculates how much water will be retained after it rains.
+"""
 
 
 def rain(walls):
