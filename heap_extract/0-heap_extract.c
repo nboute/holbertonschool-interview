@@ -60,7 +60,7 @@ int count_nodes(heap_t *root)
  *
  * Return: Pointer to the node at index @index or NULL if it doesn't exist
  */
-heap_t * get_node_at_index(heap_t *root, int index, int curr_index)
+heap_t *get_node_at_index(heap_t *root, int index, int curr_index)
 {
 	heap_t *left, *right;
 
