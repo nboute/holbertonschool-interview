@@ -89,6 +89,7 @@ int heap_extract(heap_t **root)
 
 	if (!root || !*root)
 		return (0);
+	value = (*root)->n;
 	if (!(*root)->left && !(*root)->right)
 	{
 		value = (*root)->n;
@@ -106,5 +107,5 @@ int heap_extract(heap_t **root)
 		parent->left = NULL;
 	free(last_node);
 	max_heapify(*root);
-	return ((*root)->n);
+	return (value);
 }
