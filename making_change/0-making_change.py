@@ -11,7 +11,7 @@ def makeChange(coins, total, count=0):
         total: an integer representing the total amount of change to make
     Returns:
         An integer representing the fewest number of coins to make the given
-       
+
         total. If the total cannot be made with the given coins, return -1.
     """
     if total == 0:
@@ -19,9 +19,9 @@ def makeChange(coins, total, count=0):
     if total < 0 or len(coins) == 0:
         return -1
     coins = sorted(coins, reverse=True)
-    
+
     remove_coin = makeChange(coins, total - coins[0], count + 1)
-    
+
     pop_pile = makeChange(coins[1:], total, count)
     if remove_coin == -1 and pop_pile == -1:
         return -1
