@@ -13,6 +13,8 @@ def makeChange(coins, total):
         An integer representing the fewest number of coins to make the given
         total. If the total cannot be made with the given coins, return -1.
     """
+    if total <= 0:
+        return 0
     dp = [float('inf')] * (total + 1)
     dp[0] = 0
 
