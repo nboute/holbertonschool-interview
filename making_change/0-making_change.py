@@ -3,6 +3,7 @@
 This module contains the function makeChange(coins, total).
 """
 
+
 def makeChange(coins, total):
     """Make change for a given total using the fewest number of coins.
     Args:
