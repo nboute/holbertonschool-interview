@@ -27,7 +27,6 @@ int get_max(int *array, size_t size)
  * @array: array to be sorted
  * @n: size of the array
  * @exp: exponent
-
 */
 void countSort(int *array, int n, int exp)
 {
